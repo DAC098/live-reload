@@ -4,15 +4,22 @@
   "description": "quick server for reloading a webpage when a js file changes",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "start": "node index.js",
+	"build-client": "./node_modules/.bin/gulp"
   },
   "author": "David Cathers",
   "license": "ISC",
   "dependencies": {
     "chokidar": "^1.6.1",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
     "socket.io": "^1.7.2",
     "socket.io-client": "^1.7.2",
     "webpack": "^1.14.0"
-  }
+},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/DAC098/live-reload.git"
+	},
+	"homepage": "https://github.com/DAC098/live-reload#readme"
 }
