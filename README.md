@@ -3,8 +3,14 @@
 a small node server for refreshing files in a browser while working
 
 it will definitely runs on node v7.3.0
+```console
+npm start
+```
 
 if there are any changes to the client file then you will need to run gulp on the files
+```console
+npm run build-client
+```
 
 ### config
 
