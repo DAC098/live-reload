@@ -1,0 +1,56 @@
+@keyframes snackbar_anim_forward {
+	from {
+		height: 0;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+  	to {
+		height: 48px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+}
+
+@keyframes snackbar_anim_reverse {
+	from {
+		height: 48px;
+		padding-top: 14px;
+		padding-bottom: 14px;
+	}
+ 	to {
+		height: 0;
+		padding-top: 0px;
+		padding-bottom: 0px;
+	}
+}
+
+#live-reload.md-snackbar {
+	z-index: 100;
+	position: absolute;
+	display: none;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	padding: 0px 24px;
+	min-width: 288px;
+	height: 0;
+	background-color: #323232;
+	border-radius: 2px;
+	color: #ff9800;
+}
+
+#live-reload.md-snackbar.anim-forward {
+	display: block;
+	animation-name: snackbar_anim_forward;
+	animation-duration: 200ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+#live-reload.md-snackbar.anim-reverse {
+	display: block;
+	animation-name: snackbar_anim_reverse;
+	animation-duration: 200ms;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
