@@ -41,3 +41,13 @@ https://you.example.com
 ```
 
 there are ssl files but they were quick and might work for other purposes, but probably not
+
+### setup
+
+if you have never run npm before, to install all the dependencies
+```console
+npm install
+```
+should install all the necessary dependencies for the server
+
+read the above for the other pertinent commands in npm for this project
