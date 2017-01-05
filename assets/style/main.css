@@ -54,3 +54,10 @@
 	animation-fill-mode: forwards;
 	animation-timing-function: ease-out;
 }
+
+#live-reload-ui {
+	display: none;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}

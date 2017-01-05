@@ -5,6 +5,9 @@ const npath = require('path');
 const url = require('url');
 
 const express = require('express');
+const session = require('express-session');
+const store = require('session-file-store')(session);
+
 const chokidar = require('chokidar');
 const sio = require('socket.io');
 
@@ -20,6 +23,17 @@ const watcher = chokidar.watch('file, dir, glob');
 
 const app = express();
 
+const app_session = {
+	secret: 'live-reload',
+	name: 'lr.sid',
+	store: new store({
+		path: '../stored_configs'
+	}),
+	cookie: {
+		secure: true
+	}
+}
+
 const csoc = new sio();
 
 const sis_path = '/mnt/sis';
@@ -30,9 +44,8 @@ const ports = {
 };
 
 const tls = {
-	cert: fs.readFileSync('./tls/svr.cert'),
-	key: fs.readFileSync('./tls/svr.key'),
-	passphrase: 'tds601st'
+	cert: fs.readFileSync('./tls/livereload.crt'),
+	key: fs.readFileSync('./tls/livereload.key')
 };
 
 // methods---------------------------------------------------------------------
@@ -72,6 +85,8 @@ function log(...args) {
 // express app-----------------------------------------------------------------
 
 app.use('/assets',express.static(npath.join(process.cwd(),'assets')));
+
+app.use(session(app_session));
 
 app.get('/',function(req,res) {
 	log('new client request');

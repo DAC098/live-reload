@@ -1,0 +1,22 @@
+okay you now know how to create a certificate authority and create device certificates from that
+book to read? openssl cookbook
+
+create the CA
+--create root key
+	openssl genrsa -out root.key 2048
+
+--create root crt
+	openssl req -x509 -new -nodes -key root.key -sha256 -days 9999 -out root.crt
+
+once CA has been made create certs for devices
+--create device key
+	openssl genrsa -out local.key 2048
+
+--create device csr
+	openssl req -new -key local.key -out local.csr
+
+--create cert from CA
+	openssl x509 -req -in local.csr -CA ./path/to/root.crt -CAkey ./path/to/root.key -CAcreateserial -out local.crt -days 9999 -sha256
+
+to create a pkcs12 for browsers (e.g. chrome)
+	openssl pkcs12 -export -clcerts -in local.crt -inkey local.key -out local.p12
